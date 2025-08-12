@@ -1,0 +1,26 @@
+[project]
+name = "rpcats"
+version = "0.1.0"
+description = "Display cat information for the specified breed."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=0.3.27",
+    "langgraph>=0.6.4",
+    "requests>=2.32.4",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "flake8>=7.3.0",
+    "isort>=6.0.1",
+    "pytest>=8.4.1",
+]
+
+[project.scripts]
+rpcats = "main:main"
+
+[build-system]
+requires = ["setuptools>=78.1.0", "wheel>=0.45.1"]
+build-backend = "setuptools.build_meta"

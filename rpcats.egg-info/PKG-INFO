@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: rpcats
+Version: 0.1.0
+Summary: Display cat information for the specified breed.
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: langchain>=0.3.27
+Requires-Dist: langgraph>=0.6.4
+Requires-Dist: requests>=2.32.4
