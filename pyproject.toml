@@ -5,9 +5,11 @@ description = "Display cat information for the specified breed."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "fastapi>=0.116.1",
     "langchain>=0.3.27",
     "langgraph>=0.6.4",
     "requests>=2.32.4",
+    "uvicorn>=0.35.0",
 ]
 
 [dependency-groups]
@@ -17,6 +19,10 @@ dev = [
     "isort>=6.0.1",
     "pytest>=8.4.1",
 ]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["api", "app", "config", "langgraph_module", "lang_module", "main", "utils"]
 
 [project.scripts]
 rpcats = "main:main"
