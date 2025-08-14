@@ -21,7 +21,7 @@ dev = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["api", "app", "config", "langgraph_module", "lang_module", "main", "utils"]
 
 [project.scripts]

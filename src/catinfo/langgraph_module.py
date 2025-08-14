@@ -12,8 +12,8 @@ Usage example (generic):
 """
 from typing import Dict, Any, Optional
 
-from api import get_breeds_info
-from utils import find_breed_info, breed_summary
+from rpcats.rpcats.api import get_breeds_info
+from rpcats.rpcats.utils import find_breed_info, breed_summary
 
 
 class CatBreedNode:

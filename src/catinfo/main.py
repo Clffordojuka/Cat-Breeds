@@ -4,8 +4,8 @@ import argparse
 import sys
 from typing import Optional
 
-from api import get_breeds_info
-from utils import find_breed_info, print_breed_profile
+from rpcats.rpcats.api import get_breeds_info
+from rpcats.rpcats.utils import find_breed_info, print_breed_profile
 
 
 def parse_args() -> argparse.Namespace:

@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+catinfo/rpcats.egg-info/PKG-INFO
+catinfo/rpcats.egg-info/SOURCES.txt
+catinfo/rpcats.egg-info/dependency_links.txt
+catinfo/rpcats.egg-info/entry_points.txt
+catinfo/rpcats.egg-info/requires.txt
+catinfo/rpcats.egg-info/top_level.txt
+tests/test_utils.py

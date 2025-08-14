@@ -1,4 +1,4 @@
-from utils import find_breed_info, breed_summary
+from catinfo.utils import find_breed_info, breed_summary
 
 SAMPLE = [
     {"name": "Siamese", "origin": "Thailand", "temperament": "Active", "life_span": "8 - 12", "weight": {"imperial": "8 - 10"}, "description": "Friendly cat"},

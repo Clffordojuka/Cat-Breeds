@@ -1,19 +1,28 @@
 # Use a small Python base
 FROM python:3.11-slim
 
+# Set working directory
 WORKDIR /app
 
-# Copy pyproject/requirements first for caching
+# Copy project metadata first for caching
 COPY pyproject.toml .
 COPY requirements.txt .
 
-# Install runtime deps
+# Upgrade pip and install dependencies
 RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
 
-# Copy app code
+# Install dependencies in editable mode (so src/rpcats is importable)
+COPY src/ ./src
+RUN pip install -e ./src
+
+# Copy rest of the project (tests, README, etc.)
 COPY . .
 
-# Expose port (Render provide via $PORT)
-ENV PORT 8000
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Set PYTHONPATH so Python finds src/rpcats
+ENV PYTHONPATH=/app/src
+
+# Expose port (for Render, Railway, etc.)
+ENV PORT=8000
+
+# Default command to run Uvicorn
+CMD ["uvicorn", "rpcats.app:app", "--host", "0.0.0.0", "--port", "8000"]

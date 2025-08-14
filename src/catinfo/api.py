@@ -4,7 +4,7 @@ from typing import List, Dict, Any
 
 import requests
 
-from config import BREEDS_ENDPOINT, REQUEST_TIMEOUT
+from rpcats.rpcats.config import BREEDS_ENDPOINT, REQUEST_TIMEOUT
 
 
 @lru_cache(maxsize=1)

@@ -8,3 +8,4 @@ rpcats.egg-info/dependency_links.txt
 rpcats.egg-info/entry_points.txt
 rpcats.egg-info/requires.txt
 rpcats.egg-info/top_level.txt
+test/test_utils.py
