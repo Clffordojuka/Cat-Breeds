@@ -4,8 +4,8 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 
-from src.catinfo.api import get_breeds_info
-from src.catinfo.utils import find_breed_info, breed_summary
+from .api import get_breeds_info
+from .utils import find_breed_info, breed_summary
 
 app = FastAPI(title="Cat Info API", version="1.0")
 
