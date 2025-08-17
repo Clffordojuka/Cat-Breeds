@@ -22,4 +22,4 @@ ENV PYTHONPATH=/app/src
 EXPOSE 8000
 
 # Default command (note $PORT and correct module path)
-CMD ["uvicorn", "src.catinfo.app:app", "--host", "0.0.0.0", "--port", "${PORT}"]
+CMD uvicorn src.catinfo.app:app --host 0.0.0.0 --port $PORT
