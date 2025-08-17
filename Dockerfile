@@ -22,4 +22,4 @@ ENV PYTHONPATH=/app
 ENV PORT=8000
 
 # Run Uvicorn pointing to app.py
-CMD ["uvicorn", "src.catinfo.app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "src.catinfo.app:app", "--host", "0.0.0.0", "--port", "${PORT}"]
