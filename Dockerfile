@@ -1,25 +1,25 @@
+# Use a small Python base
 FROM python:3.11-slim
 
+# Set working directory
 WORKDIR /app
 
-# Copy project metadata first (for caching)
-COPY pyproject.toml .
-COPY requirements.txt .
+# Copy dependency files first
+COPY pyproject.toml ./
+COPY requirements.txt ./
 
-# Upgrade pip
+# Install dependencies
 RUN python -m pip install --upgrade pip
+RUN pip install -r requirements.txt
 
-# Copy all source code (no src folder)
-COPY . .
+# Copy app source
+COPY src/ ./src
 
-# Install package in editable mode (if needed)
-# RUN pip install -e .
+# Ensure PYTHONPATH is set
+ENV PYTHONPATH=/app/src
 
-# Make sure Python can find all modules
-ENV PYTHONPATH=/app
+# Don’t override Render’s PORT
+EXPOSE 8000
 
-# Expose port
-ENV PORT=8000
-
-# Run Uvicorn pointing to app.py
+# Default command (note $PORT and correct module path)
 CMD ["uvicorn", "src.catinfo.app:app", "--host", "0.0.0.0", "--port", "${PORT}"]
