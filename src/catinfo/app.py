@@ -1,11 +1,9 @@
-"""FastAPI deployment wrapper for catinfo."""
+"""FastAPI deployment wrapper for Cat Info with real-time data fetching."""
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from typing import Optional
-import asyncio
 
-from .api import get_breeds_info  # async-ready function
+from .api import get_breeds_info
 from .utils import find_breed_info, breed_summary
 
 app = FastAPI(title="Cat Info API", version="1.0")
@@ -20,11 +18,13 @@ app.add_middleware(
 
 
 @app.get("/breed")
-async def get_breed(name: str = Query(..., description="Name of the cat breed")):
-    """Return summary + raw data for a requested breed name."""
+def get_breed(name: str = Query(..., description="Name of the cat breed")):
+    """
+    Return summary + raw data for a requested breed name.
+    Fetches real-time data from TheCatAPI on each request.
+    """
     try:
-        # Fetch breeds asynchronously
-        breeds = await asyncio.to_thread(get_breeds_info)
+        breeds = get_breeds_info()  # real-time fetch
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -36,11 +36,11 @@ async def get_breed(name: str = Query(..., description="Name of the cat breed"))
 
 
 @app.get("/")
-async def root():
+def root():
     return {"message": "Welcome to Cat Info API! Use /breed?name=Siamese"}
 
 
 @app.get("/health")
-async def healthcheck():
+def healthcheck():
     """Healthcheck endpoint for Render or uptime monitors."""
     return {"status": "ok"}

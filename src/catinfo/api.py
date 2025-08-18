@@ -1,12 +1,12 @@
 import httpx
 import asyncio
-from functools import lru_cache
+#from functools import lru_cache
 from typing import List, Dict, Any
 
 from .config import BREEDS_ENDPOINT, REQUEST_TIMEOUT
 
 
-@lru_cache(maxsize=1)
+#@lru_cache(maxsize=1)
 def get_breeds_info_sync() -> List[Dict[str, Any]]:
     """Synchronous fetch with caching."""
     import requests
