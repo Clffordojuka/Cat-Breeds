@@ -15,8 +15,8 @@ except Exception:
             return fn
         return _decorator
 
-from rpcats.rpcats.api import get_breeds_info
-from rpcats.rpcats.utils import find_breed_info, breed_summary
+from .api import get_breeds_info
+from .utils import find_breed_info, breed_summary
 
 
 @tool("get-cat-breed-info")
