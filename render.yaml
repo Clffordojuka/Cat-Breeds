@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: rpcats
+    env: docker
+    dockerfilePath: Dockerfile
+    branch: main
+    plan: free
+    buildCommand: docker build -t rpcats .
+    startCommand: docker run -p 8000:8000 -e PORT=8000 rpcats
+    healthCheckPath: /health
+    autoDeploy: true

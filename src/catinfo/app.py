@@ -36,3 +36,9 @@ def get_breed(name: str = Query(..., description="Name of the cat breed")):
 @app.get("/")
 def root():
     return {"message": "Welcome to Cat Info API! Use /breed?name=Siamese"}
+
+
+@app.get("/health")
+def healthcheck():
+    """Healthcheck endpoint for Render or uptime monitors."""
+    return {"status": "ok"}
