@@ -21,4 +21,4 @@ ENV PYTHONPATH=/app/src
 EXPOSE 8000
 
 # Default command: use shell form to allow $PORT expansion
-CMD uvicorn src.catinfo.app:app --host 0.0.0.0 --port ${PORT:-8000}
+CMD ["sh", "-c", "uvicorn src.catinfo.app:app --host 0.0.0.0 --port ${PORT:-8000}"]
