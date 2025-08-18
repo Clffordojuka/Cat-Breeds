@@ -21,4 +21,4 @@ ENV PYTHONPATH=/app/src
 EXPOSE 8000
 
 # Correct CMD (use shell form for env var expansion)
-CMD "sh", "-c", "uvicorn src.catinfo.app:app --host 0.0.0.0 --port ${PORT:-8000}"
+CMD ["sh", "-c", "uvicorn src.catinfo.app:app --host 0.0.0.0 --port ${PORT:-8000}"]
