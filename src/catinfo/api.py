@@ -1,15 +1,18 @@
-import httpx
-import asyncio
-#from functools import lru_cache
+"""API utilities — fetch real-time data from TheCatAPI with error handling."""
+
 from typing import List, Dict, Any
+import requests
 
 from .config import BREEDS_ENDPOINT, REQUEST_TIMEOUT
 
 
-#@lru_cache(maxsize=1)
-def get_breeds_info_sync() -> List[Dict[str, Any]]:
-    """Synchronous fetch with caching."""
-    import requests
+def get_breeds_info() -> List[Dict[str, Any]]:
+    """
+    Fetch all cat breeds from TheCatAPI in real-time.
+
+    Raises:
+        RuntimeError: if the network request fails.
+    """
     try:
         resp = requests.get(BREEDS_ENDPOINT, timeout=REQUEST_TIMEOUT)
         resp.raise_for_status()
@@ -19,9 +22,3 @@ def get_breeds_info_sync() -> List[Dict[str, Any]]:
         return data
     except requests.RequestException as exc:
         raise RuntimeError(f"Failed to fetch breeds: {exc}") from exc
-
-
-async def get_breeds_info() -> List[Dict[str, Any]]:
-    """Async wrapper for FastAPI."""
-    loop = asyncio.get_event_loop()
-    return await loop.run_in_executor(None, get_breeds_info_sync)
